@@ -1,29 +1,26 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
-
 import React from 'react';
-import {NavigationContainer} from '@react-navigation/native';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import Register from './screen/Register.tsx';
-import Login from './screen/Login';
-import CheckEmail from './screen/CheckEmail/index.js';
+import Navigation from './navigation';
+import {DefaultTheme, NavigationContainer} from '@react-navigation/native';
 
-const Stack = createNativeStackNavigator();
 
-function App(): JSX.Element {
+const MyTheme = {
+  ...DefaultTheme,
+  colors: {
+    ...DefaultTheme.colors,
+    primary: '#F5BD0A',
+    background: '#fff',
+    text: '#2E3E5C',
+    border: '#D0DBEA',
+    notification: 'rgb(255, 59, 48)',
+  },
+};
+
+const App: React.FC = () => {
   return (
-    <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name="Login" component={Login} options={{ headerShown: false }}/>
-        <Stack.Screen name="Register" component={Register} options={{ headerShown: false }}/>
-        <Stack.Screen name="CheckEmail" component={CheckEmail} options={{ headerShown: false }}/>
-      </Stack.Navigator>
+    <NavigationContainer theme={MyTheme}>
+      <Navigation />
     </NavigationContainer>
   );
-}
+};
 
 export default App;
